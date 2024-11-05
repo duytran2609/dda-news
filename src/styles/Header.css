@@ -1,0 +1,80 @@
+.navbar {
+  height: 70px;
+}
+
+.navbar-brand img {
+  margin-left: -50px;
+  max-height: 100%;
+  height: 130px;
+}
+
+.category-menu {
+  position: sticky;
+  height: 50px;
+}
+
+.category-menu-link {
+  text-decoration: none;
+  flex-grow: 1;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-menu-link:hover {
+  background-color: #6c757d;
+  border-radius: 0;
+}
+.avatar-icon i {
+  font-size: 2rem; /* Tăng kích thước của icon */
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.avatar-icon i:hover {
+  color: #ccc;
+}
+.avatar-icon {
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.custom-dropdown-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+}
+
+.dropdown-item {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown-item i {
+  margin-right: 10px;
+}
+
+.logout-item {
+  color: #e74c3c;
+}
+
+.logout-item i {
+  color: #e74c3c;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #000;
+}

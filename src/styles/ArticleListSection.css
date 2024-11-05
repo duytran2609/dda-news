@@ -1,0 +1,19 @@
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng nhẹ */
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Hiệu ứng khi hover */
+}
+
+.card-img-top {
+  height: 200px; /* Chiều cao cố định cho ảnh trên mỗi card */
+  object-fit: cover; /* Giữ ảnh không bị méo */
+}
+
+.source-logo {
+  width: 30px; /* Kích thước logo của nguồn báo */
+  height: 30px;
+  object-fit: contain; /* Đảm bảo logo hiển thị tốt */
+}

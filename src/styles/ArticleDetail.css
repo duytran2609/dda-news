@@ -1,0 +1,44 @@
+.article-detail {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.article-info {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+}
+
+.image-source {
+  max-width: 150px; /* Giới hạn kích thước hình ảnh logo nguồn */
+  height: 50px;
+  border-radius: 4px; /* Tạo viền bo góc cho hình ảnh logo */
+}
+
+.article-image-container {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.article-image {
+  max-width: 100%; /* Đảm bảo hình ảnh bài báo không vượt quá 100% chiều rộng */
+  height: auto;
+  border-radius: 8px; /* Tạo viền bo góc cho hình ảnh bài báo */
+}
+
+.image-caption {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 0.5rem;
+}
+
+.article-content p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}

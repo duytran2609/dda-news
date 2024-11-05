@@ -1,0 +1,14 @@
+footer {
+  background-color: #000; /* Màu nền footer */
+  color: #fff; /* Màu chữ footer */
+  padding: 1rem;
+}
+
+footer a {
+  text-decoration: none; /* Loại bỏ gạch chân */
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #ccc; /* Đổi màu khi hover */
+}
