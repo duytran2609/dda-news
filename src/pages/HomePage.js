@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header"; // Import từ components
-import ArticleListSection from "../components/ArticleListSection";
+import ArticleListSection from "../components/ArticleList";
 import Footer from "../components/Footer";
 
 const HomePage = () => {
