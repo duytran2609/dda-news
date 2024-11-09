@@ -9,13 +9,16 @@ const Logo = () => (
   </a>
 );
 
-const SearchBar = () => (
+// Component tìm kiếm
+const SearchBar = ({ searchQuery, setSearchQuery }) => (
   <form className="d-flex align-items-center" style={{ width: "600px" }}>
     <input
       className="form-control me-2"
       type="search"
       placeholder="Nhập bài báo cần tìm"
       aria-label="Search"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)} // Cập nhật giá trị khi người dùng nhập
     />
     <button
       className="btn btn-outline-dark btn-sm px-2"
@@ -28,7 +31,7 @@ const SearchBar = () => (
 );
 
 // Component chính Header
-const Header = () => {
+const Header = ({ searchQuery, setSearchQuery }) => {
   const navigate = useNavigate(); // Khởi tạo useNavigate
 
   // Hàm xử lý sự kiện nhấn vào avatar để chuyển đến trang đăng nhập
@@ -44,7 +47,7 @@ const Header = () => {
           <Logo />
 
           {/* Thanh tìm kiếm */}
-          <SearchBar />
+          <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
           {/* Icon người dùng */}
           <a href="#" className="avatar-icon ms-3" onClick={handleLoginClick}>

@@ -1,19 +1,30 @@
 .card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng nhẹ */
-  transition: transform 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Hiệu ứng đổ bóng nhẹ hơn */
+  transition: transform 0.2s, box-shadow 0.2s; /* Thêm hiệu ứng cho bóng */
+  border-radius: 8px; /* Bo góc cho card */
+  overflow: hidden; /* Đảm bảo không bị tràn */
 }
 
 .card:hover {
   transform: translateY(-5px); /* Hiệu ứng khi hover */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Tăng cường hiệu ứng bóng khi hover */
 }
 
 .card-img-top {
   height: 200px; /* Chiều cao cố định cho ảnh trên mỗi card */
   object-fit: cover; /* Giữ ảnh không bị méo */
+  border-top-left-radius: 8px; /* Bo góc cho ảnh */
+  border-top-right-radius: 8px; /* Bo góc cho ảnh */
 }
 
 .source-logo {
   width: 30px; /* Kích thước logo của nguồn báo */
   height: 30px;
   object-fit: contain; /* Đảm bảo logo hiển thị tốt */
+  border-radius: 50%; /* Bo góc cho logo */
+  margin-right: 5px; /* Khoảng cách bên phải của logo */
+}
+
+.card-body {
+  padding: 20px; /* Khoảng cách giữa nội dung và viền card */
 }
