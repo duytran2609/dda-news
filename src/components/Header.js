@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Nhập useNavigate
 import "../styles/Header.css";
 
 // Các component con
@@ -9,13 +8,15 @@ const Logo = () => (
   </a>
 );
 
-const SearchBar = () => (
+const SearchBar = ({ searchQuery, setSearchQuery }) => (
   <form className="d-flex align-items-center" style={{ width: "600px" }}>
     <input
       className="form-control me-2"
       type="search"
       placeholder="Nhập bài báo cần tìm"
       aria-label="Search"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)} // Cập nhật giá trị khi người dùng nhập
     />
     <button
       className="btn btn-outline-dark btn-sm px-2"
@@ -28,14 +29,7 @@ const SearchBar = () => (
 );
 
 // Component chính Header
-const Header = () => {
-  const navigate = useNavigate(); // Khởi tạo useNavigate
-
-  // Hàm xử lý sự kiện nhấn vào avatar để chuyển đến trang đăng nhập
-  const handleLoginClick = () => {
-    navigate("/login"); // Chuyển hướng đến trang đăng nhập
-  };
-
+const Header = ({ searchQuery, setSearchQuery }) => {
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -44,12 +38,10 @@ const Header = () => {
           <Logo />
 
           {/* Thanh tìm kiếm */}
-          <SearchBar />
-
-          {/* Icon người dùng */}
-          <a href="#" className="avatar-icon ms-3" onClick={handleLoginClick}>
-            <i className="fa-solid fa-user"></i>
-          </a>
+          <SearchBar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
         </div>
       </nav>
 

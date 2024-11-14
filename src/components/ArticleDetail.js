@@ -1,6 +1,6 @@
-import React from "react";
-import { useParams } from "react-router";
-import articles from "../data/ArticleFakeData";
+import React, { useEffect } from "react";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useArticles } from "../services/ArticleContext";
 import "../styles/ArticleDetail.css";
 
 // =========================
@@ -9,22 +9,29 @@ import "../styles/ArticleDetail.css";
 
 const ArticleTitle = ({ title }) => <h1 className="article-title">{title}</h1>;
 
-const ArticleImageSource = ({ sourceLogo }) => (
+const ArticleImageSource = ({ source }) => (
   <div className="article-image-source-container">
-    <img src={sourceLogo} alt="Nguồn viết báo" className="image-source" />
+    {source && source.logo_url && (
+      <img
+        src={source.logo_url}
+        alt="Nguồn viết báo"
+        className="image-source"
+      />
+    )}
   </div>
 );
 
-const ArticleTime = ({ time }) => <p className="article-time">{time}</p>;
+const ArticleTime = ({ pubDate }) => (
+  <p className="article-time">{new Date(pubDate).toLocaleString()}</p>
+);
 
 const ArticleDescription = ({ description }) => (
   <p className="article-description">{description}</p>
 );
 
-const ArticleImageWithCaption = ({ imageArticle, imageCaption, title }) => (
+const ArticleImageWithCaption = ({ image_url, title }) => (
   <div className="article-image-container">
-    <img src={imageArticle} alt={title} className="article-image" />
-    {imageCaption && <p className="image-caption">{imageCaption}</p>}
+    <img src={image_url} alt={title} className="article-image" />
   </div>
 );
 
@@ -40,17 +47,34 @@ const ArticleContent = ({ content }) => (
 // Main Component
 // =========================
 
-const ArticleDetail = () => {
+const ArticleDetailSection = () => {
   const { id } = useParams();
-  const article = articles.find((a) => a.id === parseInt(id));
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { articlesList } = useArticles();
+
+  // Thử lấy article từ location state (khi navigate từ danh sách)
+  const articleFromState = location.state?.article;
+
+  // Nếu không có trong state, tìm trong context
+  const article =
+    articleFromState || articlesList.find((a) => a.article_id === id);
+
+  useEffect(() => {
+    // Nếu không tìm thấy bài báo, chuyển về trang chủ
+    if (!article) {
+      navigate("/");
+    }
+  }, [article, navigate]);
 
   if (!article) {
-    return <p>Article not found!</p>;
-  }
-
-  // Kiểm tra xem thuộc tính content có tồn tại không
-  if (!article.content) {
-    return <p>Content not available!</p>;
+    return (
+      <div className="container mt-4">
+        <div className="alert alert-warning" role="alert">
+          Không tìm thấy bài báo! Đang chuyển về trang chủ...
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -58,26 +82,29 @@ const ArticleDetail = () => {
       {/* Tiêu đề bài báo */}
       <ArticleTitle title={article.title} />
 
-      {/* Hình ảnh nguồn viết báo */}
-      <ArticleImageSource sourceLogo={article.sourceLogo} />
+      <div className="d-flex align-items-center mb-3">
+        {/* Hình ảnh nguồn viết báo */}
+        <ArticleImageSource source={article.source} />
 
-      {/* Thời gian */}
-      <ArticleTime time={article.time} />
+        {/* Thời gian */}
+        <ArticleTime pubDate={article.pubDate} />
+      </div>
 
       {/* Mô tả bài viết */}
       <ArticleDescription description={article.description} />
 
-      {/* Hình ảnh chính với chú thích */}
-      <ArticleImageWithCaption
-        imageArticle={article.imageArticle}
-        imageCaption={article.imageCaption}
-        title={article.title}
-      />
+      {/* Hình ảnh chính */}
+      {article.image_url && (
+        <ArticleImageWithCaption
+          image_url={article.image_url}
+          title={article.title}
+        />
+      )}
 
       {/* Nội dung bài báo */}
-      <ArticleContent content={article.content} />
+      {article.content && <ArticleContent content={article.content} />}
     </div>
   );
 };
 
-export default ArticleDetail;
+export default ArticleDetailSection;
