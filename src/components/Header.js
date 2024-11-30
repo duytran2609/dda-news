@@ -1,15 +1,34 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link từ react-router-dom
 import "../styles/Header.css";
 
 // Các component con
 const Logo = () => (
-  <a className="navbar-brand" href="#">
+  <Link to="/" className="navbar-brand">
+    {" "}
+    {/* Thay <a> bằng <Link> */}
     <img src="/assets/logo.png" alt="Logo" />
+  </Link>
+);
+
+// Thêm component cho Video và Tiện ích
+const VideoLink = () => (
+  <a href="/video" className="nav-link">
+    <i className="fas fa-video me-1"></i> Video
+  </a>
+);
+
+const UtilityLink = () => (
+  <a href="/utility" className="nav-link">
+    <i className="fas fa-tools me-1"></i> Tiện ích
   </a>
 );
 
 const SearchBar = ({ searchQuery, setSearchQuery }) => (
-  <form className="d-flex align-items-center" style={{ width: "600px" }}>
+  <form
+    className="d-flex align-items-center search-bar"
+    style={{ width: "600px" }}
+  >
     <input
       className="form-control me-2"
       type="search"
@@ -33,9 +52,15 @@ const Header = ({ searchQuery, setSearchQuery }) => {
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container">
+        <div className="container d-flex align-items-center">
           {/* Logo */}
           <Logo />
+
+          {/* Các liên kết mới cho Video và Tiện ích */}
+          <div className="navbar-links d-flex ms-4">
+            <VideoLink />
+            <UtilityLink />
+          </div>
 
           {/* Thanh tìm kiếm */}
           <SearchBar

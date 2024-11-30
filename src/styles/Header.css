@@ -8,6 +8,28 @@
   height: 130px;
 }
 
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links .nav-link {
+  margin-right: 20px;
+  color: #000;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links .nav-link i {
+  font-size: 1rem;
+}
+
+.navbar-links .nav-link:hover {
+  color: #555;
+  text-decoration: none;
+}
+
 .category-menu {
   position: sticky;
   height: 50px;
@@ -27,6 +49,7 @@
   background-color: #6c757d;
   border-radius: 0;
 }
+
 .avatar-icon i {
   font-size: 2rem; /* Tăng kích thước của icon */
   color: #000;
@@ -36,6 +59,7 @@
 .avatar-icon i:hover {
   color: #ccc;
 }
+
 .avatar-icon {
   font-size: 24px;
   color: #fff;
@@ -77,4 +101,14 @@
 .dropdown-item:hover {
   background-color: #f8f9fa;
   color: #000;
+}
+
+/* Thêm kiểu cho thanh tìm kiếm nếu cần */
+.search-bar {
+  flex-grow: 1;
+}
+
+/* Điều chỉnh khoảng cách giữa các phần tử trong navbar */
+.container.d-flex.align-items-center > *:not(:last-child) {
+  margin-right: 20px;
 }
